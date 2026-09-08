@@ -55,9 +55,10 @@ page, on Notre équipe and on Nous Contacter, matching where the source site pla
 
 ## Notes
 
-- Paths are absolute under `/share/demo/fondatest-rebrand`, so the site needs to be served
-  from that prefix.
-- `vercel.json` at the repo root sets `cleanUrls`, so `/nos-metiers/` resolves to
-  `nos-metiers/index.html`.
+- All paths are root-relative (`/styles.css`, `/nos-metiers/`, `/assets/...`), so this
+  folder is meant to be the document root of the site. Serving it from a sub-path would
+  break every link and stylesheet.
+- Every page is `<name>/index.html`, which any static host resolves for `/<name>/` without
+  extra configuration. `vercel.json` sets `cleanUrls` so `/nos-metiers` works too.
 - The contact form is a `mailto:` form; the source site used Contact Form 7, which needs a
   backend.
